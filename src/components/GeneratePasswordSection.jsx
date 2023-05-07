@@ -15,6 +15,16 @@ const GeneratePasswordSection = () => {
     setUserPassword(generatePassword())
   }
 
+  const copyPassword = () => {
+    if (userPassword === "" ) {
+        alert("Please generate password")
+    }
+    else{
+        navigator.clipboard.writeText(userPassword);
+        alert("Copied password: " + userPassword)
+    }    
+  }
+
   return (
     <div className="px-4 md:px-0 border-indigo-950 border-b-8 py-20">
       <section
@@ -118,10 +128,10 @@ const GeneratePasswordSection = () => {
           Generate
         </button>
         <div className="flex flex-col md:flex-row gap-2 items-center">
-          <p className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center w-[300px] h-[40px] rounded-xl md:w-[400px] md:h-[80px] border-2 border-indigo-950">
+          <p className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[60px] border-2 border-indigo-950">
               {userPassword}
           </p>
-          <button className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
+          <button onClick={() => {copyPassword()}} className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
             <CopyBtn/>
             <p>Copy</p>
           </button>
