@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer className="text-[14px] mx-4 md:mx-8 lg:mx-32 py-5 text-center md:text-base">
+    <footer className="font-body text-[14px] mx-4 md:mx-8 lg:mx-32 py-5 text-center md:text-base">
       <p> &copy; Copyright 2023 Genri. All rights reserved.</p>
       <p className="attribution">
         Designed by

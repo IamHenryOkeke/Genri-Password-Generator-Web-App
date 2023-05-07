@@ -4,7 +4,7 @@ import GeneratePasswordSection from "../components/HomeComponents/GeneratePasswo
 
 const Home = () => {
   return (
-    <div>
+    <div  className="font-body">
       <HeroSection/>
       <GeneratePasswordSection/>
       <Description/>
