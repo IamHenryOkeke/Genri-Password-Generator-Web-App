@@ -1,6 +1,6 @@
 import { useState } from "react";
-import {ReactComponent as CopyBtn} from "../assets/svg/Vector.svg";
-import useGenerate from "../../useGenerate";
+import {ReactComponent as CopyBtn} from "../../assets/svg/Vector.svg";
+import useGenerate from "../../../useGenerate";
 
 const GeneratePasswordSection = () => {
   const [upperCaseValue, setUpperCaseValue] = useState(5);
