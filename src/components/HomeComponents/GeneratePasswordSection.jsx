@@ -1,8 +1,10 @@
 import { useState } from "react";
 import {ReactComponent as CopyBtn} from "../../assets/svg/Vector.svg";
+import {ReactComponent as SaveBtn} from "../../assets/svg/Save.svg";
 import useGenerate from "../../../useGenerate";
 
 const GeneratePasswordSection = () => {
+  const [userSite, setUserSite] = useState("")
   const [upperCaseValue, setUpperCaseValue] = useState(5);
   const [lowerCaseValue, setLowerCaseValue] = useState(5);
   const [numberValue, setNumberValue] = useState(5);
@@ -22,6 +24,16 @@ const GeneratePasswordSection = () => {
     else{
         navigator.clipboard.writeText(userPassword);
         alert("Copied password: " + userPassword)
+    }    
+  }
+
+  const savePassword = () => {
+    if (userPassword === "" || userSite === "") {
+        alert("Please generate password or add a site")
+    }
+    else{
+        localStorage.setItem(userSite, userPassword)
+        alert("Saved Password")
     }    
   }
 
@@ -128,12 +140,26 @@ const GeneratePasswordSection = () => {
           Generate
         </button>
         <div className="flex flex-col md:flex-row gap-2 items-center">
-          <p className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[60px] border-2 border-indigo-950">
+          <p className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[50px] border-2 border-indigo-950">
               {userPassword}
           </p>
           <button onClick={() => {copyPassword()}} className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
             <CopyBtn/>
             <p>Copy</p>
+          </button>
+        </div>
+        <div className="flex flex-col md:flex-row gap-2 items-center">
+          <input 
+          type="url"
+          className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[50px] border-2 border-indigo-950"
+            value={userSite}
+            onChange={(e) => {
+              setUserSite(e.target.value)
+            }}
+          />
+          <button onClick={() => {savePassword()}} className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
+            <SaveBtn className="fill-white"/>
+            <p>Save Password</p>
           </button>
         </div>
       </section>
