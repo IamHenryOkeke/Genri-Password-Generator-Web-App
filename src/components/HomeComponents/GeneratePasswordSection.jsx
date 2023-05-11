@@ -4,7 +4,7 @@ import {ReactComponent as SaveBtn} from "../../assets/svg/Save.svg";
 import useGenerate from "../../../useGenerate";
 
 const GeneratePasswordSection = () => {
-  const [userSite, setUserSite] = useState("")
+  const [userSite, setUserSite] = useState("");
   const [upperCaseValue, setUpperCaseValue] = useState(5);
   const [lowerCaseValue, setLowerCaseValue] = useState(5);
   const [numberValue, setNumberValue] = useState(5);
@@ -23,7 +23,7 @@ const GeneratePasswordSection = () => {
     }
     else{
         navigator.clipboard.writeText(userPassword);
-        alert("Copied password: " + userPassword)
+        alert("Copied password: " + userPassword);
     }    
   }
 
@@ -32,7 +32,12 @@ const GeneratePasswordSection = () => {
         alert("Please generate password or add a site")
     }
     else{
-        localStorage.setItem(userSite, userPassword)
+        const obj = {}
+        obj["site"] = userSite;
+        obj["password"] = userPassword;
+        localStorage.setItem( userSite , JSON.stringify(obj))
+        console.log(localStorage.length)
+        console.log(JSON.parse(localStorage.getItem(userSite)))
         alert("Saved Password")
     }    
   }
@@ -151,6 +156,7 @@ const GeneratePasswordSection = () => {
         <div className="flex flex-col md:flex-row gap-2 items-center">
           <input 
           type="url"
+          placeholder = "Enter a site url"
           className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[50px] border-2 border-indigo-950"
             value={userSite}
             onChange={(e) => {
