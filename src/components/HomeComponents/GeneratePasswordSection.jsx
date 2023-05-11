@@ -29,7 +29,7 @@ const GeneratePasswordSection = () => {
 
   const savePassword = () => {
     if (userPassword === "" || userSite === "") {
-        alert("Please generate password or add a site")
+        alert("Please generate password or Enter a site name")
     }
     else{
         const obj = {}
@@ -155,8 +155,8 @@ const GeneratePasswordSection = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-2 items-center">
           <input 
-          type="url"
-          placeholder = "Enter a site url"
+          type="text"
+          placeholder = "Enter the site name e.g Facebook"
           className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[50px] border-2 border-indigo-950"
             value={userSite}
             onChange={(e) => {
