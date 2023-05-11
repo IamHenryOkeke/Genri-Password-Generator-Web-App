@@ -20,7 +20,7 @@ const Navbar = () => {
             </div>
             <ul className="hidden lg:flex lg:gap-10 w-full lg:w-auto text-lg">
                 <li>
-                    <Link to="/Genri-Password-Generator-Web-App" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Genri-Password-Generator-Web-App/" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Home
                     </Link>
                 </li>
@@ -31,7 +31,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link to="/Genri-Password-Generator-Web-App/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
-                        Saved Password
+                        Saved Passwords
                     </Link>
                 </li>
                 <li>
@@ -44,18 +44,18 @@ const Navbar = () => {
         <div className={`${navbar ? "flex" : "hidden"} lg:hidden py-4 flex-col items-center gap-4 bg-indigo-1000 mt-3 rounded-xl`}>
             <ul className='flex flex-col items-center gap-5'>
                 <li className="navbar-item">
-                    <Link to="/Genri-Password-Generator-Web-App" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Genri-Password-Generator-Web-App/" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Home
                     </Link>
                 </li>
                 <li className="navbar-item">
                     <Link to="" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
-                        Recent Password
+                        Recents
                     </Link>
                 </li>
                 <li className="navbar-item">
                     <Link to="/Genri-Password-Generator-Web-App/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
-                        Saved Password
+                        Saved Passwords
                     </Link>
                 </li>
                 <li className="navbar-item">
