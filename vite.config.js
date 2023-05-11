@@ -4,6 +4,6 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/Genri-Password-Generator-Web-App/",
+  base: "/Genri-Password-Generator-Web-App",
   plugins: [react(), svgr()],
 })

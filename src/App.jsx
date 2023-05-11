@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
-        <Route path="/Genri-Password-Generator-Web-App/" element={<Home/>} >
+        <Route path="/Genri-Password-Generator-Web-App" element={<Home/>} >
         </Route>
         <Route path="/Genri-Password-Generator-Web-App/Saved-Password" element={<SavedPassword/>} >
         </Route>
