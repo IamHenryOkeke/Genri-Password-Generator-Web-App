@@ -2,6 +2,8 @@ import { useState } from "react";
 import {ReactComponent as CopyBtn} from "../../assets/svg/Vector.svg";
 import {ReactComponent as SaveBtn} from "../../assets/svg/Save.svg";
 import useGenerate from "../../../useGenerate";
+import CopyPassword from "../../utils/CopyPassword";
+
 
 const GeneratePasswordSection = () => {
   const [userSite, setUserSite] = useState("");
@@ -13,18 +15,14 @@ const GeneratePasswordSection = () => {
 
   const  { generatePassword } = useGenerate(upperCaseValue, lowerCaseValue, numberValue, symbolValue)
 
+  const { copyFunc } = CopyPassword ()
+  
   const handleOnClick = () => {
     setUserPassword(generatePassword())
   }
 
-  const copyPassword = () => {
-    if (userPassword === "" ) {
-        alert("Please generate password")
-    }
-    else{
-        navigator.clipboard.writeText(userPassword);
-        alert("Copied password: " + userPassword);
-    }    
+  const handleCopy = () => {
+    copyFunc(userPassword);   
   }
 
   const savePassword = () => {
@@ -148,7 +146,7 @@ const GeneratePasswordSection = () => {
           <p className="px-3 text-sm md:text-base text-ellipsis text-center flex items-center justify-center min-w-[300px] h-[40px] rounded-xl w-fit md:min-w-[250px] md:h-[50px] border-2 border-indigo-950">
               {userPassword}
           </p>
-          <button onClick={() => {copyPassword()}} className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
+          <button onClick={() => {handleCopy()}} className="px-4 py-[6px] flex gap-1 items-center rounded-md bg-indigo-950 md:px-4 md:py-2 hover:bg-indigo-1000">
             <CopyBtn/>
             <p>Copy</p>
           </button>
