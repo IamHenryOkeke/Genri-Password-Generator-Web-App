@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import PasswordCard from '../components/SavedPasswords/PasswordCard';
 
 const SavedPassword = () => {
   const [savedPasswords, setSavedPasswords] = useState([]);
@@ -12,19 +13,11 @@ const SavedPassword = () => {
       </h2> 
       {
         savedPasswords.length >= 1 ? (
-          <div className="bg-indigo-950 mt-4">
+          <div className="bg-indigo-950 mt-4 rounded-xl mx-4 md:mx-0 md:rounded-none">
           {
             savedPasswords.map((index) => (
-              <div key={index} className="flex flex-col gap-3 py-4 mx-4 md:mx-8">
-                <div className="p-4 bg-indigo-1000 rounded-2xl">
-                  <h2 className='mb-4'>
-                    Site: {JSON.parse(localStorage.getItem(index)).site}
-                  </h2>
-                  <p>
-                    Password: {JSON.parse(localStorage.getItem(index)).password}
-                  </p>
-                </div>
-                
+              <div key={index} className="flex flex-col gap-3 py-4 mx-4 md:mx-8 lg:mx-32">
+                <PasswordCard site={JSON.parse(localStorage.getItem(index)).site} password={JSON.parse(localStorage.getItem(index)).password}  />
               </div>
             ))
           }
