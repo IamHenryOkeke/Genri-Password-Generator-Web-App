@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Hero_Image from "../../assets/images/Hero_Image.png"
 
 const Hero = () => {
@@ -17,16 +18,16 @@ const Hero = () => {
             Generate the hard-to-get and easy-to-remember password
           </h1>
           <p className="hidden md:block lg:text-xl lg:font-medium lg:leading-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            molestias cumque voluptatibus porro quod at dignissimos, temporibus,
-            iusto officia ullam nemo voluptates corrupti recusandae obcaecati ab
-            sequi et quia hic!
+          Strong password is essential to keep your accounts and personal information safe. Use Genri to create a unique and secure password that will help protect your online identity
           </p>
-          <button
-            className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white hover:bg-indigo-1000"
-          >
-            Generate
-          </button>
+          <a href="#Generate-Password">
+            <button
+              className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white hover:bg-indigo-1000"
+            >
+                Generate
+            </button>
+          </a>
+          
         </div>
       </div>
       <div className="w-full lg:w-1/2 md:mx-auto">

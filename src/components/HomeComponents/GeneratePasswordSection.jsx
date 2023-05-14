@@ -42,7 +42,7 @@ const GeneratePasswordSection = () => {
 
   return (
     <div className="px-4 md:px-0 border-indigo-950 border-b-8 py-20">
-      <section
+      <section id="Generate-Password"
         className="rounded-xl p-5 md:p-8 flex flex-col gap-3 lg:px-36 md:py-6 md:grid md:grid-cols-2 md:gap-5 md:rounded-none bg-indigo-950 justify-between md:text-4xl mb-5"
       >
         <div
