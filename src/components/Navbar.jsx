@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className={`${navbar ? "flex" : "hidden"} lg:hidden py-4 flex-col items-center gap-4 bg-indigo-1000 mt-3 rounded-xl`}>
             <ul className='flex flex-col items-center gap-5'>
                 <li className="navbar-item">
-                    <Link to="/Genri-Password-Generator-Web-App/" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Home
                     </Link>
                 </li>
@@ -54,12 +54,12 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/Genri-Password-Generator-Web-App/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Saved Passwords
                     </Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/Genri-Password-Generator-Web-App/Contact-Us" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Contact-Us" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Contact Us
                     </Link>
                 </li>
