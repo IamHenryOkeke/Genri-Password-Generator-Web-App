@@ -1,6 +1,5 @@
 {
   "name": "genri-password-generator-web-app",
-  "homepage": "https://github.com/IamHenryOkeke/Genri-Password-Generator-Web-App",
   "private": true,
   "version": "0.0.0",
   "type": "module",
