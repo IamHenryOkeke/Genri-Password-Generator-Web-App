@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="mx-4 md:mx-8 lg:mx-32 font-body">
         <div className="flex flex-row pt-10 justify-between items-center">
             <div className="logo-container flex justify-between w-full md:w-1/2">
-                <Link to="/Genri-Password-Generator-Web-App">
+                <Link to="/">
                     <img src={Logo} alt=""/>
                 </Link>
             </div>
@@ -20,22 +20,22 @@ const Navbar = () => {
             </div>
             <ul className="hidden lg:flex lg:gap-10 w-full lg:w-auto text-lg">
                 <li>
-                    <Link to="/Genri-Password-Generator-Web-App" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Home
                     </Link>
                 </li>
                 <li>
-                    <Link to="" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Recents
                     </Link>
                 </li>
                 <li>
-                    <Link to="/Genri-Password-Generator-Web-App/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Saved-Password" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Saved Passwords
                     </Link>
                 </li>
                 <li>
-                    <Link to="/Genri-Password-Generator-Web-App/Contact-Us" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
+                    <Link to="/Contact-Us" className="transition-all ease-in-out delay-300 hover:border-b-4 hover:border-indigo-950 duration-300" href="">
                         Contact Us
                     </Link>
                 </li>

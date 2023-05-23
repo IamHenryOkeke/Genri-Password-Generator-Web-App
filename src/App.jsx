@@ -11,11 +11,11 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
-        <Route path="/Genri-Password-Generator-Web-App" element={<Home/>} >
+        <Route path="/" element={<Home/>} >
         </Route>
-        <Route path="/Genri-Password-Generator-Web-App/Saved-Password" element={<SavedPassword/>} >
+        <Route path="/Saved-Password" element={<SavedPassword/>} >
         </Route>
-        <Route path="/Genri-Password-Generator-Web-App/Contact-Us" element={<Contact/>} >
+        <Route path="/Contact-Us" element={<Contact/>} >
         </Route>
       </Routes>
       <Footer/>
