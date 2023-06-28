@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {ReactComponent as CopyBtn} from "../../assets/svg/Vector.svg";
 import {ReactComponent as SaveBtn} from "../../assets/svg/Save.svg";
 import useGenerate from "../../../useGenerate";
 import CopyPassword from "../../utils/CopyPassword";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 
 
 const GeneratePasswordSection = () => {
+  const [userStatus, setUserStatus] = useState(null);
   const [userSite, setUserSite] = useState("");
   const [upperCaseValue, setUpperCaseValue] = useState(5);
   const [lowerCaseValue, setLowerCaseValue] = useState(5);
@@ -39,6 +42,20 @@ const GeneratePasswordSection = () => {
         alert("Saved Password")
     }    
   }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in
+            const uid = user.uid;
+            setUserStatus(uid);
+        } else {
+            // User is signed out
+            setUserStatus(null);
+            console.log("user is logged out");
+        }
+    })
+  }, [])
 
   return (
     <div className="px-4 md:px-0 border-indigo-950 border-b-8 py-20">
@@ -151,7 +168,8 @@ const GeneratePasswordSection = () => {
             <p>Copy</p>
           </button>
         </div>
-        <div className="flex flex-col md:flex-row gap-2 items-center">
+        {
+          userStatus && <div className="flex flex-col md:flex-row gap-2 items-center">
           <input 
           type="text"
           placeholder = "Enter the site name e.g Facebook"
@@ -166,6 +184,8 @@ const GeneratePasswordSection = () => {
             <p>Save Password</p>
           </button>
         </div>
+        }
+        
       </section>
     </div>
   )

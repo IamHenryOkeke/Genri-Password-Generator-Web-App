@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import Hero_Image from "../../assets/images/Hero_Image.png"
 
 const Hero = () => {
