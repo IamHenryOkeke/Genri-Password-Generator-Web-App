@@ -14,7 +14,7 @@ const ContactCard = ({role, twitterUrl, phone, portfolioUrl, linkedInUrl, emailA
   return (
     <div>
       <h2 className='text-center text-lg font-medium my-3'>{role}</h2>
-      <div className="py-4 px-6 bg-indigo-1000 rounded-2xl flex flex-col items-center">
+      <div className="py-4 px-10 bg-indigo-1000 rounded-2xl flex flex-col items-center">
         <p className='md:text-xl mb-2'>Socials</p>
         <div className='flex gap-5 mb-5'>
           <a href={twitterUrl} target='_blank' rel="noreferrer">
@@ -30,7 +30,7 @@ const ContactCard = ({role, twitterUrl, phone, portfolioUrl, linkedInUrl, emailA
             <Phone className="transition-all ease-in-out delay-150 hover:scale-125 duration-500"/>
           </a>
         </div>
-        <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
+        <div className='flex flex-col items-center gap-3 md:w-[80%]'>
           <h1 className='md:text-xl -mb-3'>Send a mail</h1>
           <label>
             Message Subject:
@@ -39,12 +39,12 @@ const ContactCard = ({role, twitterUrl, phone, portfolioUrl, linkedInUrl, emailA
             type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className='border-2 border-black rounded-md p-2 bg-neutral-1000'
+            className='border-2 border-black rounded-md p-2 w-full bg-neutral-1000'
           />
 
           <label>Your message</label>
           <textarea rows="5" value={message}
-            onChange={(e) => setMessage(e.target.value)} className="p-2 border-2 border-black text-gray-900 bg-neutral-1000 resize-none rounded-md" placeholder="Write your message here..."></textarea>
+            onChange={(e) => setMessage(e.target.value)} className="p-2 border-2 w-full border-black text-gray-900 bg-neutral-1000 resize-none rounded-md" placeholder="Write your message here..."></textarea>
           <a href={`mailto:${emailAddress}?subject=${subject}&body=${message}`}>
             <button className='px-4 py-1 bg-slate-400 border rounded-md'>Click to Send an Email</button>
           </a>

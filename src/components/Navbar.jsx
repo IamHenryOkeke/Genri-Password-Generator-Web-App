@@ -73,7 +73,7 @@ const Navbar = () => {
                                         <button
                                             onClick={() => {
                                                 signOut(auth).then(() => {
-                                                    console.log("Signed out successfully")
+                                                    alert("You are logged out successfully")
                                                     navigate("/")
                                                 }).catch((err) => {
                                                     console.log(err)
@@ -163,13 +163,13 @@ const Navbar = () => {
                                         <button
                                             onClick={() => {
                                                 signOut(auth).then(() => {
-                                                    console.log("Signed out successfully")
+                                                    alert("You are logged out successfully")
                                                     navigate("/")
                                                 }).catch((err) => {
                                                     console.log(err)
                                                 })
                                             }}
-                                            className="px-4 py-2 bg-indigo-950 rounded-md text-white"
+                                            className="px-8 py-2 bg-indigo-950 rounded-md text-white"
                                         >
                                             Log out
                                         </button>  
@@ -178,14 +178,14 @@ const Navbar = () => {
                                     <div className="flex gap-3">
                                         <Link to="/login">
                                             <button
-                                                className="px-4 py-2 bg-indigo-950 rounded-md text-white"
+                                                className="px-8 py-2 bg-indigo-950 rounded-md text-white"
                                             >
                                                 Log In
                                             </button>
                                         </Link>
                                         <Link to="/signup">
                                             <button
-                                                className="px-4 py-2 bg-indigo-950 rounded-md text-white"
+                                                className="px-8 py-2 bg-indigo-950 rounded-md text-white"
                                             >
                                                 Sign Up
                                             </button>
@@ -198,7 +198,7 @@ const Navbar = () => {
                     ) : (location.pathname === "/signup") ? (
                             <Link to="/login">
                                 <button
-                                    className="px-4 py-2 bg-indigo-950 rounded-md text-white"
+                                    className="px-8 py-2 bg-indigo-950 rounded-md text-white"
                                 >
                                     Log In
                                 </button>
@@ -206,7 +206,7 @@ const Navbar = () => {
                     ) : (location.pathname === "/login") ? (
                         <Link to="/signup">
                                 <button
-                                    className="px-4 py-2 bg-indigo-950 rounded-md text-white"
+                                    className="px-8 py-2 bg-indigo-950 rounded-md text-white"
                                 >
                                     Sign Up
                                 </button>

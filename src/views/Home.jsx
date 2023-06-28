@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div className="font-body">
       {
-        userStatus && <p className="mx-4 md:mx-8 lg:mx-32 text-lg md:text-4xl font-semibold mt-4">
+        userStatus && <p className="mx-4 md:mx-8 lg:mx-32 text-xl md:text-4xl font-semibold mt-4">
           Welcome{" "}
           {userStatus.displayName}{" "}
           &#128075;
