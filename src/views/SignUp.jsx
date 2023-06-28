@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {  createUserWithEmailAndPassword  } from 'firebase/auth';
+import {  createUserWithEmailAndPassword, updateProfile  } from 'firebase/auth';
 import { auth } from '../firebase';
+import { ReactComponent as Loading } from "../assets/svg/Loading.svg";
+
  
 const SignUp = () => {
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         email : "",
-        password : ""
+        password : "",
+        firstName : "",
+        lastName : ""
     })
     
     const handleOnChange = (e) => {
@@ -24,25 +28,30 @@ const SignUp = () => {
     }
 
     const handleRequest = async () => {
-        await createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log(user);
-            navigate("/")
-            // ...
-        })
-        .catch((error) => {
+        setLoading(true)
+        try {
+            const { user } = await createUserWithEmailAndPassword(
+                                auth, 
+                                formData.email, 
+                                formData.password
+                            )
+            console.log(`User ${user.uid} created `)
+            await updateProfile(user, {
+                displayName: `${formData.firstName} ${formData.lastName}`
+            });
+            setLoading(false)
+            navigate("/");
+            console.log("User profile updated");
+        } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
-            // ..
-        });
+        }
     }
     
     const handleOnSubmit = async (e) => {
       e.preventDefault()
-      if(!formData.email || !formData.password){
+      if(!formData.email || !formData.password || !formData.lastName || !formData.firstName){
         alert('Please fill all the fields')
       }else{
         console.log(formData)
@@ -54,13 +63,41 @@ const SignUp = () => {
     <main>                     
         <h1 className='text-center text-lg font-medium my-3'>Sign Up To Our Services</h1>  
         <div className="bg-indigo-950 text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
-        <form className='flex flex-col items-center justify-center md:gap-5 gap-3'>                                                                                            
+            <form className='flex flex-col items-center justify-center md:gap-5 gap-3'> 
+                <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
+                    <label htmlFor="firstName" className='font-medium'>
+                        First name
+                    </label>
+                    <input
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
+                        type='text'
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleOnChange}                                
+                        placeholder="First Name"
+                        required                                      
+                    />
+                </div> 
+                <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
+                    <label htmlFor="lastName" className='font-medium'>
+                        Last name
+                    </label>
+                    <input
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
+                        type='text'
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleOnChange}                                
+                        placeholder="Last Name"
+                        required                                      
+                    />
+                </div>                                                                                           
                 <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                     <label htmlFor="email-address" className='font-medium'>
                         Email address
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
                         type='email'
                         name="email"
                         value={formData.email}
@@ -75,7 +112,7 @@ const SignUp = () => {
                         Password
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
                         type="password"
                         id = "password"
                         name="password"
@@ -93,11 +130,22 @@ const SignUp = () => {
                                                             
                 </div>      
                 <button
-                    className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-1000 rounded-md text-white"
+                    className="px-4 py-2 bg-indigo-1000 rounded-md text-white"
                     type="submit" 
                     onClick={handleOnSubmit}                        
                 >  
-                    Sign up                                
+                    {
+                        loading ? (
+                            <div className='flex gap-2'>
+                                <Loading className="w-5 h-5 animate-spin"/>
+                                <p>Processing</p>
+                            </div>
+                        ) : (
+                            <div>
+                                Sign Up
+                            </div>
+                        )
+                    }                               
                 </button>
                                                                      
             </form>   

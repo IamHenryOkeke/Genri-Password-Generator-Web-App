@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  signInWithEmailAndPassword  } from 'firebase/auth';
 import { auth } from '../firebase';
+import { ReactComponent as Loading } from "../assets/svg/Loading.svg";
+
 
 const LogIn = () => {
 
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     const [formData, setFormData] = useState({
         email : "",
@@ -25,19 +28,19 @@ const LogIn = () => {
     }
 
     const handleRequest = async () => {
+        setLoading(true)
         await signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
             console.log(user);
+            setLoading(false)
             navigate("/")
-            // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
-            // ..
         });
     }
 
@@ -61,7 +64,7 @@ const LogIn = () => {
                             Email address
                         </label>
                         <input
-                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[50%]'
+                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
                             type='email'
                             name="email"
                             value={formData.email}
@@ -76,7 +79,7 @@ const LogIn = () => {
                             Password
                         </label>
                         <input
-                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[50%]'
+                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black md:w-[50%]'
                             type="password"
                             id = "password"
                             name="password"
@@ -94,11 +97,23 @@ const LogIn = () => {
                     </div>                                             
                             
                     <button
-                        className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-1000 rounded-md text-white"
+                        className="px-4 py-2 bg-indigo-1000 rounded-md text-white"
                         type="submit" 
                         onClick={handleOnSubmit}                        
                     >  
-                        Log In                               
+                    {
+                        loading ? (
+                            <div className='flex gap-2'>
+                                <Loading className="w-5 h-5 animate-spin"/>
+                                <p>Processing</p>
+                            </div>
+                        ) : (
+                            <div>
+                                Log In
+                            </div>
+                        )
+                    }
+                                                    
                     </button>
                                                                         
                 </form>   
