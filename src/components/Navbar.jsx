@@ -18,12 +18,14 @@ const Navbar = () => {
             // User is signed in
             const uid = user.uid;
             setUserStatus(uid);
+            console.log(user)
         } else {
             // User is signed out
             setUserStatus(null);
             console.log("user is logged out");
         }
     })
+    setNavbar(false)
   }, [])
   return (
     <nav className="mx-4 md:mx-8 lg:mx-32 font-body">
@@ -167,7 +169,7 @@ const Navbar = () => {
                                                     console.log(err)
                                                 })
                                             }}
-                                            className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white"
+                                            className="px-4 py-2 bg-indigo-950 rounded-md text-white"
                                         >
                                             Log out
                                         </button>  
@@ -176,14 +178,14 @@ const Navbar = () => {
                                     <div className="flex gap-3">
                                         <Link to="/login">
                                             <button
-                                                className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white"
+                                                className="px-4 py-2 bg-indigo-950 rounded-md text-white"
                                             >
                                                 Log In
                                             </button>
                                         </Link>
                                         <Link to="/signup">
                                             <button
-                                                className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white"
+                                                className="px-4 py-2 bg-indigo-950 rounded-md text-white"
                                             >
                                                 Sign Up
                                             </button>
@@ -196,7 +198,7 @@ const Navbar = () => {
                     ) : (location.pathname === "/signup") ? (
                             <Link to="/login">
                                 <button
-                                    className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white"
+                                    className="px-4 py-2 bg-indigo-950 rounded-md text-white"
                                 >
                                     Log In
                                 </button>
@@ -204,7 +206,7 @@ const Navbar = () => {
                     ) : (location.pathname === "/login") ? (
                         <Link to="/signup">
                                 <button
-                                    className="hidden md:block md:font-medium md:text-sm md:px-8 md:py-2 bg-indigo-950 rounded-md text-white"
+                                    className="px-4 py-2 bg-indigo-950 rounded-md text-white"
                                 >
                                     Sign Up
                                 </button>
