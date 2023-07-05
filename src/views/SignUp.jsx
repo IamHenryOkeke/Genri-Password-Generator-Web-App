@@ -8,6 +8,8 @@ import { ReactComponent as Loading } from "../assets/svg/Loading.svg";
 const SignUp = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
+    const [passwordError, setPasswordError] = useState(null)
+    const [emailError, setEmailError] = useState(null)
     const [formData, setFormData] = useState({
         email : "",
         password : "",
@@ -28,24 +30,33 @@ const SignUp = () => {
     }
 
     const handleRequest = async () => {
-        setLoading(true)
+        setLoading(true);
+        setPasswordError(null);
+        setEmailError(null);
         try {
             const { user } = await createUserWithEmailAndPassword(
                                 auth, 
                                 formData.email, 
                                 formData.password
                             )
-            console.log(`User ${user.uid} created `)
             await updateProfile(user, {
                 displayName: `${formData.firstName} ${formData.lastName}`
             });
-            setLoading(false)
+            setLoading(false);
             navigate("/");
-            console.log("User profile updated");
         } catch (error) {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            console.log(error);
+            errorCode === "auth/email-already-in-use" ?
+                //handle email already exists
+                alert("Email already in use") :
+            errorCode === "auth/weak-password" ? (
+                //handle weak passwords
+                setPasswordError("Weak password. Please input a strong password")
+            ) : errorCode === "auth/invalid-email" ? (
+                setEmailError("Invalid email address")
+            ) : ("")
+            setLoading(false); 
         }
     }
     
@@ -54,7 +65,6 @@ const SignUp = () => {
       if(!formData.email || !formData.password || !formData.lastName || !formData.firstName){
         alert('Please fill all the fields')
       }else{
-        console.log(formData)
         handleRequest()
       }
     }
@@ -105,6 +115,11 @@ const SignUp = () => {
                         placeholder="Email address"
                         required                                      
                     />
+                    {
+                        emailError && <p className='text-red-800'>
+                            {emailError}
+                        </p>
+                    }
                 </div>
 
                 <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
@@ -121,6 +136,11 @@ const SignUp = () => {
                         placeholder="Password" 
                         required               
                     />
+                    {
+                        passwordError && <p className='text-red-800'>
+                            {passwordError}
+                        </p>
+                    }
                 </div>  
                 <div>
                     <label htmlFor="">
