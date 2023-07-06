@@ -6,7 +6,7 @@ import SavedPassword from "./views/SavedPassword"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./views/SignUp"
 import LogIn from "./views/LogIn"
-
+import ResetPassword from "./views/ResetPassword"
 
 function App() {
   return (
@@ -20,6 +20,8 @@ function App() {
         <Route path="/Contact-Us" element={<Contact/>} >
         </Route>
         <Route path="/login" element={<LogIn/>} >
+        </Route>
+        <Route path="/reset-password" element={<ResetPassword/>} >
         </Route>
         <Route path="/signup" element={<SignUp/>} >
         </Route>
