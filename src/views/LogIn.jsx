@@ -9,7 +9,8 @@ const LogIn = () => {
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
-
+    const [passwordError, setPasswordError] = useState(null)
+    const [emailError, setEmailError] = useState(null)
     const [formData, setFormData] = useState({
         email : "",
         password : ""
@@ -27,31 +28,39 @@ const LogIn = () => {
             (psw.type = "password")
     }
 
-    const handleRequest = async () => {
+    const handleRequest = () => {
         setLoading(true)
-        await signInWithEmailAndPassword(auth, formData.email, formData.password)
+        setPasswordError(null);
+        setEmailError(null);
+        signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
             setLoading(false)
             navigate("/")
         })
         .catch((error) => {
+            setLoading(false);
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            errorCode === "auth/user-not-found" ?
+                //handle email already exists
+                alert("Email not registered") :
+            errorCode === "auth/wrong-password" ? (
+                //handle weak passwords
+                setPasswordError("Wrong password")
+            ) : errorCode === "auth/invalid-email" ? (
+                setEmailError("Invalid email address")
+            ) : ("")
         });
     }
 
     const handleOnSubmit = async (e) => {
-      e.preventDefault()
-      if(!formData.email || !formData.password){
-        alert('Please fill all the fields')
-      }else{
-        console.log(formData)
-        handleRequest()
-      }
+        e.preventDefault()
+        if(!formData.email || !formData.password){
+            alert('Please fill all the fields')
+        }else{
+            handleRequest()
+        }
     }
 
     return (
@@ -72,6 +81,11 @@ const LogIn = () => {
                             placeholder="Email address"
                             required                                      
                         />
+                        {
+                        emailError && <p className='text-red-800'>
+                            {emailError}
+                        </p>
+                         }
                     </div>
 
                     <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
@@ -88,6 +102,11 @@ const LogIn = () => {
                             placeholder="Password" 
                             required               
                         />
+                        {
+                        passwordError && <p className='text-red-800'>
+                            {passwordError}
+                        </p>
+                        }
                     </div> 
                     <div>
                         <label htmlFor="">
