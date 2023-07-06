@@ -136,7 +136,11 @@ const LogIn = () => {
                     </button>
                                                                         
                 </form>   
-                    
+                <p className='text-center mt-4'>
+                    <NavLink className= "underline hover:no-underline ml-2" to="/reset-password" >
+                        forgot password ?
+                    </NavLink>
+                </p>  
                 <p className='text-center mt-4'>
                     No account yet?
                     <NavLink className= "underline hover:no-underline ml-2" to="/signup" >
