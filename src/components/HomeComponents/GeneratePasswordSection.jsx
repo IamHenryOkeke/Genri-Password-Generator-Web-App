@@ -37,8 +37,6 @@ const GeneratePasswordSection = () => {
         obj["site"] = userSite;
         obj["password"] = userPassword;
         localStorage.setItem( userSite , JSON.stringify(obj))
-        console.log(localStorage.length)
-        console.log(JSON.parse(localStorage.getItem(userSite)))
         alert("Saved Password")
     }    
   }
@@ -52,7 +50,6 @@ const GeneratePasswordSection = () => {
         } else {
             // User is signed out
             setUserStatus(null);
-            console.log("user is logged out");
         }
     })
   }, [])

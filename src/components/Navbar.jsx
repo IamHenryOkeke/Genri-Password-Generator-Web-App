@@ -9,7 +9,6 @@ import { auth } from "../firebase";
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
   const [navbar, setNavbar] = useState(false);
   const [userStatus, setUserStatus] = useState(null);
   useEffect(() => {
@@ -18,11 +17,9 @@ const Navbar = () => {
             // User is signed in
             const uid = user.uid;
             setUserStatus(uid);
-            console.log(user)
         } else {
             // User is signed out
             setUserStatus(null);
-            console.log("user is logged out");
         }
     })
     setNavbar(false)
